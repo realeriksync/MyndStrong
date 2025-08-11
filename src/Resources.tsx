@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, ExternalLink, Phone, MessageCircle, Heart, BookOpen, Users, Shield } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Phone, MessageCircle, Heart, BookOpen, Users, Shield, FileText, Video, Clock } from 'lucide-react';
 
 interface ResourcesProps {
   onBack: () => void;
@@ -72,6 +72,58 @@ export default function Resources({ onBack }: ResourcesProps) {
     }
   ];
 
+  const detailedResources = [
+    {
+      title: "Managing Work Stress",
+      description: "Practical strategies for dealing with workplace pressure and maintaining work-life balance.",
+      link: "https://www.mayoclinic.org/healthy-lifestyle/adult-health/in-depth/work-life-balance/art-20048134",
+      readTime: "5 min read",
+      icon: <FileText className="w-6 h-6" />
+    },
+    {
+      title: "Breathing Exercises for Anxiety",
+      description: "Simple breathing techniques you can use anywhere to calm your mind.",
+      link: "https://www.healthline.com/health/breathing-exercise",
+      readTime: "10 min",
+      icon: <Heart className="w-6 h-6" />
+    },
+    {
+      title: "Building Emotional Intelligence",
+      description: "Learn to understand and manage your emotions more effectively.",
+      link: "https://www.verywellmind.com/what-is-emotional-intelligence-2795423",
+      readTime: "12 min watch",
+      icon: <Video className="w-6 h-6" />
+    },
+    {
+      title: "Mindfulness Meditation",
+      description: "Guided meditation to help you stay present and reduce stress.",
+      link: "https://www.mindful.org/meditation/mindfulness-getting-started/",
+      readTime: "15 min",
+      icon: <Heart className="w-6 h-6" />
+    },
+    {
+      title: "Setting Healthy Boundaries",
+      description: "How to communicate your needs and maintain healthy relationships.",
+      link: "https://www.psychologytoday.com/us/blog/click-here-happiness/201909/how-set-healthy-boundaries",
+      readTime: "7 min read",
+      icon: <FileText className="w-6 h-6" />
+    },
+    {
+      title: "Dealing with Career Transitions",
+      description: "Navigate job changes and career uncertainty with confidence.",
+      link: "https://www.indeed.com/career-advice/career-development/career-transition-tips",
+      readTime: "8 min read",
+      icon: <FileText className="w-6 h-6" />
+    },
+    {
+      title: "Crisis Helpline Numbers",
+      description: "Immediate support when you need it most. Available 24/7.",
+      link: "https://suicidepreventionlifeline.org/",
+      readTime: "Always available",
+      icon: <Phone className="w-6 h-6" />
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
       <div className="max-w-4xl mx-auto">
@@ -85,7 +137,41 @@ export default function Resources({ onBack }: ResourcesProps) {
 
         <div className="bg-white rounded-2xl shadow-xl p-8 mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Mental Health Resources</h1>
+          <p className="text-gray-600 mb-8">Tools, articles, and strategies to support your mental health journey</p>
           
+          {/* Detailed Resources Section */}
+          <div className="mb-8">
+            <h2 className="text-2xl font-semibold text-indigo-600 mb-6">Featured Resources</h2>
+            <div className="grid gap-4">
+              {detailedResources.map((resource, index) => (
+                <a
+                  key={index}
+                  href={resource.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gray-50 rounded-lg p-6 border border-gray-200 hover:shadow-md transition-shadow group flex items-start"
+                >
+                  <div className="text-indigo-600 mr-4 mt-1">
+                    {resource.icon}
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">
+                        {resource.title}
+                      </h3>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-indigo-600 transition-colors ml-2" />
+                    </div>
+                    <p className="text-gray-600 text-sm mb-2">{resource.description}</p>
+                    <div className="flex items-center text-xs text-indigo-600">
+                      <Clock className="w-3 h-3 mr-1" />
+                      {resource.readTime}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+
           {/* Emergency Resources */}
           <div className="mb-8">
             <h2 className="text-2xl font-semibold text-red-600 mb-4 flex items-center">
